@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: api
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;encrypt=true;trustServerCertificate=true;databaseName=db1
+    username: sa
+    password: Bharath@2024
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+        ddl-auto: update
+        dialect: org.hibernate.dialect.SQLServerDialect
+camel:
+  component:
+    kafka:
+      group-id: employee-consumer-group
+      brokers: localhost:9092
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: io.confluent.kafka.serializers.protobuf.KafkaProtobufDeserializer
+      value-serializer: io.confluent.kafka.serializers.protobuf.KafkaProtobufSerializer
+      schema-registry-u-r-l: http://localhost:8081
+      additional-properties:
+        "[specific.protobuf.value.type]": com.consumer.employeeconsumer.proto.Employee

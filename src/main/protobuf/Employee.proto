@@ -1,0 +1,15 @@
+syntax = "proto3";
+package employeeconsumer;
+
+option java_package = "com.consumer.employeeconsumer.proto";
+option java_outer_classname = "EmployeeConsumerEventWrapper";
+option java_multiple_files = true;
+
+message Employee {
+    int64 id = 1;
+    string name = 2;
+    double salary = 3;
+    string designation = 4;
+    string gender = 5;
+    string operation = 6;
+}
